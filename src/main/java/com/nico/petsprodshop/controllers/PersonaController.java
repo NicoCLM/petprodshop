@@ -91,4 +91,48 @@ public class PersonaController {
 		}
 		return "personas/EditarPersona";
 	}
+	
+	//Metodo para actualizar la informacion de la persona
+	@PostMapping("/edit")
+	public String actualizarPersona(Model model, @RequestParam int id, 
+			@Valid @ModelAttribute("personadto") PersonaDto personadto, 
+			BindingResult result) {
+		
+		try {
+			Persona persona = repo.findById(id).get();
+			model.addAttribute("persona",persona);
+			
+			if(result.hasErrors()) {
+				return "personas/EditarPersona";
+			}
+			persona.setCiudad(personadto.getCiudad());
+			persona.setCorreo_electronico(personadto.getCorreo_electronico());
+			persona.setDireccion(personadto.getDireccion());
+			persona.setIdentificacion(personadto.getIdentificacion());
+			persona.setNombre(personadto.getNombre());
+			persona.setTelefono(personadto.getTelefono());
+			
+			repo.save(persona);
+			
+		} catch (Exception e) {
+			System.out.println("Exception: " +e.getMessage());
+		}
+		
+		return "redirect:/personas";
+	}
+	
+	@GetMapping("/delete")
+	public String eliminarPersona(@RequestParam int id) {
+		try {
+			Persona persona = repo.findById(id).get();
+			
+			repo.delete(persona);
+			
+		} catch (Exception e) {
+			System.out.println("Exception: "+e.getMessage());
+		}
+		
+		return "redirect:/personas";
+	}
+	
 }
