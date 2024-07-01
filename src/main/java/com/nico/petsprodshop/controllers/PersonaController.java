@@ -121,6 +121,7 @@ public class PersonaController {
 		return "redirect:/personas";
 	}
 	
+	//Metodo para borrar persona por ID
 	@GetMapping("/delete")
 	public String eliminarPersona(@RequestParam int id) {
 		try {
