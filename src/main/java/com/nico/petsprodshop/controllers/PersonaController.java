@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nico.petsprodshop.models.Persona;
 import com.nico.petsprodshop.models.PersonaDto;
@@ -44,6 +45,7 @@ public class PersonaController {
 		return "personas/CreatePersona";
 	}
 	
+	//Crear persona
 	@PostMapping("/create")
 	public String crearPersona(@Valid @ModelAttribute("personadto")
 			PersonaDto personadto, BindingResult result) {
@@ -62,5 +64,31 @@ public class PersonaController {
 		repo.save(persona);
 		
 		return "redirect:/personas";
+	}
+	
+	//Actualizar persona
+	@GetMapping("/edit")
+	public String showPaginaEditar(Model model, @RequestParam int id) {
+		try {
+			Persona persona = repo.findById(id).get();
+			model.addAttribute("persona",persona);
+			
+			PersonaDto personadto = new PersonaDto();
+			personadto.setCiudad(persona.getCiudad());
+			personadto.setCorreo_electronico(persona.getCorreo_electronico());
+			personadto.setDireccion(persona.getDireccion());
+			personadto.setIdentificacion(persona.getIdentificacion());
+			personadto.setNombre(persona.getNombre());
+			personadto.setTelefono(persona.getTelefono());
+			
+			model.addAttribute("personadto",personadto);
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("Exception: " +e.getMessage());
+			return "redirect:/personas";
+		}
+		return "personas/EditarPersona";
 	}
 }
