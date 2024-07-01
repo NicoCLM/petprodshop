@@ -22,8 +22,8 @@
 						<label class="col-sm-4 col-form-label">Ciudad</label>
 						<div class="col-sm-8">
 							<input class="form-control" th:field="${personadto.ciudad}">
-							<p th:if="${$fields.hasErrors('nombre')}"
-								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
+							<p th:if="${#fields.hasErrors('ciudad')}"
+								th:errorclass="text-danger" th:errors="${personadto.ciudad}"></p>
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -31,16 +31,16 @@
 						<div class="col-sm-8">
 							<input class="form-control"
 								th:field="${personadto.correo_electronico}">
-							<p th:if="${$fields.hasErrors('nombre')}"
-								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
+							<p th:if="${#fields.hasErrors('correo_electronico')}"
+								th:errorclass="text-danger" th:errors="${personadto.correo_electronico}"></p>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label class="col-sm-4 col-form-label">Direccion</label>
 						<div class="col-sm-8">
 							<input class="form-control" th:field="${personadto.direccion}">
-							<p th:if="${$fields.hasErrors('nombre')}"
-								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
+							<p th:if="${#fields.hasErrors('direccion')}"
+								th:errorclass="text-danger" th:errors="${personadto.direccion}"></p>
 						</div>
 					</div>
 					<div class="row mb-3">
@@ -48,15 +48,15 @@
 						<div class="col-sm-8">
 							<input class="form-control"
 								th:field="${personadto.identificacion}">
-							<p th:if="${$fields.hasErrors('nombre')}"
-								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
+							<p th:if="${#fields.hasErrors('identificacion')}"
+								th:errorclass="text-danger" th:errors="${personadto.identificacion}"></p>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label class="col-sm-4 col-form-label">Nombre</label>
 						<div class="col-sm-8">
 							<input class="form-control" th:field="${personadto.nombre}">
-							<p th:if="${$fields.hasErrors('nombre')}"
+							<p th:if="${#fields.hasErrors('nombre')}"
 								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
 						</div>
 					</div>
@@ -64,8 +64,8 @@
 						<label class="col-sm-4 col-form-label">Telefono</label>
 						<div class="col-sm-8">
 							<input class="form-control" th:field="${personadto.telefono}">
-							<p th:if="${$fields.hasErrors('nombre')}"
-								th:errorclass="text-danger" th:errors="${personadto.nombre}"></p>
+							<p th:if="${#fields.hasErrors('telefono')}"
+								th:errorclass="text-danger" th:errors="${personadto.telefono}"></p>
 						</div>
 					</div>
 					
