@@ -1,11 +1,13 @@
 package com.nico.petsprodshop.models;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class PersonaDto {
-
+	
 	@NotEmpty(message = "Hay un campo vacio")
 	private String ciudad;
+	
 	
 	@NotEmpty(message = "Hay un campo vacio")
 	private String correo_electronico;
